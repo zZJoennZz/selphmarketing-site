@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Party Content Booth | Selph Marketing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&family=Permanent+Marker&display=swap" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            cyan: '#5DD3F5',
+                            lime: '#F7FCE5',
+                            black: '#1A1A1A',
+                            coral: '#FF8A80',
+                            white: '#FFFFFF',
+                            gold: '#FFE066',
+                            mint: '#E8F5E9',
+                            sky: '#E3F2FD',
+                            cream: '#FFFDE7',
+                            purple: '#E1BEE7',
+                            peach: '#FFCCBC',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                        script: ['Permanent Marker', 'cursive'],
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        .brush-stroke {
+            position: relative;
+            display: inline-block;
+        }
+        .brush-stroke::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: linear-gradient(90deg, #5DD3F5 0%, #F7FCE5 100%);
+            border-radius: 50px;
+            opacity: 0.9;
+            transform: skewX(-12deg);
+        }
+        .gradient-hero {
+            background: linear-gradient(135deg, #E1BEE7 0%, #F7FCE5 50%, #E3F2FD 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #5DD3F5 0%, #4FC3F7 100%);
+            box-shadow: 0 4px 15px rgba(93, 211, 245, 0.3);
+        }
+        .btn-primary:hover {
+            box-shadow: 0 6px 20px rgba(93, 211, 245, 0.4);
+        }
+        .btn-coral {
+            background: linear-gradient(135deg, #FF8A80 0%, #FFAB91 100%);
+            box-shadow: 0 4px 15px rgba(255, 138, 128, 0.3);
+        }
+        .btn-coral:hover {
+            box-shadow: 0 6px 20px rgba(255, 138, 128, 0.4);
+        }
+        .feature-icon {
+            background: linear-gradient(135deg, #E1BEE7 0%, #F7FCE5 100%);
+        }
+        .price-popular {
+            background: linear-gradient(135deg, #FFE066 0%, #FFF9C4 100%);
+            box-shadow: 0 8px 25px rgba(255, 224, 102, 0.3);
+        }
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="font-sans text-brand-black bg-white antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <img src="img/Selph Marketing_Logo.png" />
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-brand-black hover:text-brand-cyan font-medium transition">Who We Are</a>
+                    <a href="#services" class="text-brand-black hover:text-brand-cyan font-medium transition">Services</a>
+                    <a href="#awards" class="text-brand-black hover:text-brand-cyan font-medium transition">Awards</a>
+                    <a href="#results" class="text-brand-black hover:text-brand-cyan font-medium transition">Results</a>
+                    <a href="#contact" class="btn-primary text-white px-6 py-2.5 rounded-full font-semibold hover:bg-opacity-90 transition">
+                        Get Started
+                    </a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden p-2 relative z-50" aria-label="Open menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="mobile-menu fixed inset-0 bg-brand-cyan z-[60] flex flex-col items-center justify-center space-y-8">
+        <button id="close-menu" class="absolute top-6 right-6 text-white p-2" aria-label="Close menu">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+        <a href="#about" class="mobile-link text-white text-2xl font-heading font-bold">Who We Are</a>
+        <a href="#services" class="mobile-link text-white text-2xl font-heading font-bold">Services</a>
+        <a href="#awards" class="mobile-link text-white text-2xl font-heading font-bold">Awards</a>
+        <a href="#results" class="mobile-link text-white text-2xl font-heading font-bold">Results</a>
+        <a href="#contact" class="mobile-link text-white text-2xl font-heading font-bold">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
+        <div class="absolute inset-0 gradient-hero opacity-60"></div>
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-lime/40 to-transparent"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="inline-flex items-center bg-brand-purple/30 px-4 py-2 rounded-full mb-6">
+                        <i data-lucide="sparkles" class="w-4 h-4 text-brand-purple mr-2"></i>
+                        <span class="text-sm font-semibold text-brand-black">Not Your Average Photo Booth</span>
+                    </div>
+                    <h1 class="font-heading text-5xl lg:text-6xl font-bold text-brand-black leading-tight mb-6">
+                        The <span class="brush-stroke">Party Content Booth</span>
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-8 max-w-lg leading-relaxed">
+                        Create shareable moments that live beyond the party. GIFs, Boomerangs, instant text-to-phone sharing—this is content creation for the social age.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#book" class="btn-coral text-white px-8 py-4 rounded-full font-semibold text-center transition flex items-center justify-center">
+                            Book Your Date
+                            <i data-lucide="calendar" class="w-5 h-5 ml-2"></i>
+                        </a>
+                        <a href="#packages" class="border-2 border-brand-cyan text-brand-cyan px-8 py-4 rounded-full font-semibold text-center hover:bg-brand-cyan hover:text-white transition flex items-center justify-center">
+                            View Packages
+                        </a>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="bg-white rounded-2xl shadow-xl p-4 transform rotate-3 hover:rotate-0 transition duration-500 border border-gray-100">
+                        <div class="aspect-square bg-gradient-to-br from-brand-purple/20 to-brand-cyan/20 rounded-xl flex items-center justify-center">
+                            <div class="text-center">
+                                <i data-lucide="smartphone" class="w-20 h-20 text-brand-cyan mx-auto mb-4"></i>
+                                <p class="text-gray-500 font-medium">Booth Preview Image</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-lg p-4 border border-gray-100 transform -rotate-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-brand-lime rounded-full flex items-center justify-center">
+                                <i data-lucide="share-2" class="w-6 h-6 text-brand-black"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-sm">Instant Sharing</p>
+                                <p class="text-xs text-gray-500">Text, Email, Social</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Makes It Different -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-brand-coral font-semibold tracking-wider uppercase text-sm">Why Content Booth?</span>
+                <h2 class="font-heading text-4xl font-bold text-brand-black mt-2 mb-4">
+                    More Than Just Photos
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Today's guests want shareable content. We deliver the formats that perform on social.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 feature-icon rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="zap" class="w-8 h-8 text-brand-purple"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg mb-2">Animated GIFs</h3>
+                    <p class="text-gray-600 text-sm">Burst mode captures that create eye-catching loops perfect for Instagram Stories.</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 feature-icon rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="repeat" class="w-8 h-8 text-brand-purple"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg mb-2">Boomerang Mode</h3>
+                    <p class="text-gray-600 text-sm">Forward-backward motion clips that are pure fun and highly shareable.</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 feature-icon rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="smartphone" class="w-8 h-8 text-brand-purple"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg mb-2">Text-to-Phone</h3>
+                    <p class="text-gray-600 text-sm">Instant delivery via text and email. No app downloads, no waiting.</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 feature-icon rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="instagram" class="w-8 h-8 text-brand-purple"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg mb-2">Social Ready</h3>
+                    <p class="text-gray-600 text-sm">Optimized formats and custom overlays branded for your event.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Included -->
+    <section class="py-20 bg-brand-lime/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-brand-cyan font-semibold tracking-wider uppercase text-sm">Standard Package</span>
+                    <h2 class="font-heading text-4xl font-bold text-brand-black mt-2 mb-6">
+                        Everything You Need to <span class="brush-stroke">Get the Party Started</span>
+                    </h2>
+                    <p class="text-gray-600 mb-8">
+                        Every rental includes professional-grade equipment and simple setup. Just add guests.
+                    </p>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-4 bg-white rounded-xl p-4 shadow-sm">
+                            <div class="w-12 h-12 bg-brand-sky/50 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="smartphone" class="w-6 h-6 text-brand-cyan"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Selfie Booth Stand</h4>
+                                <p class="text-sm text-gray-600">Sleek, modern design that fits any venue</p>
+                            </div>
+                        </li>
+                        <li class="flex items-center gap-4 bg-white rounded-xl p-4 shadow-sm">
+                            <div class="w-12 h-12 bg-brand-sky/50 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="sun" class="w-6 h-6 text-brand-cyan"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Professional Ring Light</h4>
+                                <p class="text-sm text-gray-600">Flattering lighting for everyone</p>
+                            </div>
+                        </li>
+                        <li class="flex items-center gap-4 bg-white rounded-xl p-4 shadow-sm">
+                            <div class="w-12 h-12 bg-brand-sky/50 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="tablet" class="w-6 h-6 text-brand-cyan"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Tablet with Booth Software</h4>
+                                <p class="text-sm text-gray-600">Touch-friendly, intuitive interface</p>
+                            </div>
+                        </li>
+                        <li class="flex items-center gap-4 bg-white rounded-xl p-4 shadow-sm">
+                            <div class="w-12 h-12 bg-brand-sky/50 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="share" class="w-6 h-6 text-brand-cyan"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Instant Sharing</h4>
+                                <p class="text-sm text-gray-600">Text, email, and social uploads</p>
+                            </div>
+                        </li>
+                        <li class="flex items-center gap-4 bg-white rounded-xl p-4 shadow-sm">
+                            <div class="w-12 h-12 bg-brand-sky/50 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="book-open" class="w-6 h-6 text-brand-cyan"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Setup Instructions</h4>
+                                <p class="text-sm text-gray-600">Simple 10-minute assembly guide</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="relative">
+                    <div class="aspect-square bg-gradient-to-br from-brand-purple/10 to-brand-cyan/10 rounded-2xl flex items-center justify-center border border-gray-100">
+                        <div class="text-center">
+                            <i data-lucide="package" class="w-32 h-32 text-gray-300 mx-auto mb-4"></i>
+                            <p class="text-gray-400 font-medium">Equipment Package Image</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Packages -->
+    <section id="packages" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-brand-cyan font-semibold tracking-wider uppercase text-sm">Simple Pricing</span>
+                <h2 class="font-heading text-4xl font-bold text-brand-black mt-2 mb-4">
+                    Choose Your <span class="brush-stroke">Rental Period</span>
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Flexible options for any event. All packages include the full standard equipment.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- 24-Hour -->
+                <div class="bg-brand-sky/20 rounded-2xl p-8 border border-brand-sky/30 card-hover">
+                    <div class="text-center mb-6">
+                        <h3 class="font-heading text-xl font-bold mb-2">24-Hour Rental</h3>
+                        <p class="text-gray-600 text-sm">Most common option</p>
+                    </div>
+                    <div class="text-center mb-6">
+                        <span class="text-5xl font-bold text-brand-black">$249</span>
+                    </div>
+                    <ul class="space-y-3 mb-8 text-sm text-gray-600">
+                        <li class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-cyan mr-2"></i>
+                            Full day of fun
+                        </li>
+                        <li class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-cyan mr-2"></i>
+                            All standard features
+                        </li>
+                        <li class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-cyan mr-2"></i>
+                            Setup instructions included
+                        </li>
+                    </ul>
+                    <button class="w-full border-2 border-brand-cyan text-brand-cyan py-3 rounded-full font-semibold hover:bg-brand-cyan hover:text-white transition">
+                        Select
+                    </button>
+                </div>
+
+                <!-- Weekend - Popular -->
+                <div class="price-popular rounded-2xl p-8 border-2 border-brand-gold relative card-hover">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-brand-coral text-white px-4 py-1 rounded-full text-sm font-bold">Best Seller</span>
+                    </div>
+                    <div class="text-center mb-6">
+                        <h3 class="font-heading text-xl font-bold mb-2">Weekend Rental</h3>
+                        <p class="text-gray-600 text-sm">Fri–Mon</p>
+                    </div>
+                    <div class="text-center mb-6">
+                        <span class="text-5xl font-bold text-brand-black">$299</span>
+                    </div>
+                    <ul class="space-y-3 mb-8 text-sm text-gray-600">
+                        <li class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-coral mr-2"></i>
+                            <strong>4 full days</strong>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-coral mr-2"></i>
+                            Perfect for weddings
+                        </li>
+                        <li class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-coral mr-2"></i>
+                            All standard features
+                        </li>
+                        <li class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-coral mr-2"></i>
+                            Best value
+                        </li>
+                    </ul>
+                    <button class="w-full btn-coral text-white py-3 rounded-full font-semibold transition">
+                        Select
+                    </button>
+                </div>
+
+                <!-- Extra Day -->
+                <div class="bg-brand-lime/30 rounded-2xl p-8 border border-brand-lime/40 card-hover">
+                    <div class="text-center mb-6">
+                        <h3 class="font-heading text-xl font-bold mb-2">Extra Day</h3>
+                        <p class="text-gray-600 text-sm">Add-on option</p>
+                    </div>
+                    <div class="text-center mb-6">
+                        <span class="text-5xl font-bold text-brand-black">$75</span>
+                        <span class="text-gray-500">–$100</span>
+                    </div>
+                    <ul class="space-y-3 mb-8 text-sm text-gray-600">
+                        <li class="flex items-center">
+                            <i data-lucide="plus" class="w-4 h-4 text-brand-cyan mr-2"></i>
+                            Simple add-on
+                        </li>
+                        <li class="flex items-center">
+                            <i data-lucide="plus" class="w-4 h-4 text-brand-cyan mr-2"></i>
+                            Extend any package
+                        </li>
+                        <li class="flex items-center">
+                            <i data-lucide="plus" class="w-4 h-4 text-brand-cyan mr-2"></i>
+                            Flexible timing
+                        </li>
+                    </ul>
+                    <button class="w-full border-2 border-brand-cyan text-brand-cyan py-3 rounded-full font-semibold hover:bg-brand-cyan hover:text-white transition">
+                        Add On
+                    </button>
+                </div>
+            </div>
+
+            <!-- Deposit Info -->
+            <div class="max-w-2xl mx-auto mt-12 bg-brand-cream/50 rounded-xl p-6 border border-brand-cream/60">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm">
+                        <i data-lucide="shield-check" class="w-6 h-6 text-brand-gold"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Refundable Security Deposit: $249</h4>
+                        <p class="text-sm text-gray-600">Fully refunded within 3-5 business days after equipment return in good condition.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add-Ons -->
+    <section class="py-20 bg-brand-mint/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-brand-coral font-semibold tracking-wider uppercase text-sm">Customize Your Experience</span>
+                <h2 class="font-heading text-4xl font-bold text-brand-black mt-2 mb-4">
+                    Make It <span class="brush-stroke">Yours</span>
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Add personal touches and premium features to match your event perfectly.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-100 card-hover">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-brand-purple/20 rounded-lg flex items-center justify-center">
+                            <i data-lucide="palette" class="w-6 h-6 text-brand-purple"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-brand-coral">$40</span>
+                    </div>
+                    <h3 class="font-heading font-bold mb-2">Custom Event Overlay</h3>
+                    <p class="text-gray-600 text-sm">Names, date, logo—branded templates for your special occasion.</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-100 card-hover">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-brand-cyan/20 rounded-lg flex items-center justify-center">
+                            <i data-lucide="briefcase" class="w-6 h-6 text-brand-cyan"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-brand-coral">$50</span>
+                    </div>
+                    <h3 class="font-heading font-bold mb-2">Branded Corporate Template</h3>
+                    <p class="text-gray-600 text-sm">Professional overlays with company logos and brand colors.</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-100 card-hover">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-brand-lime/50 rounded-lg flex items-center justify-center">
+                            <i data-lucide="zap" class="w-6 h-6 text-brand-black"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-brand-coral">$25</span>
+                    </div>
+                    <h3 class="font-heading font-bold mb-2">Animated GIF / Boomerang</h3>
+                    <p class="text-gray-600 text-sm">Unlock motion modes for dynamic, shareable content.</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-100 card-hover">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-brand-peach/50 rounded-lg flex items-center justify-center">
+                            <i data-lucide="image" class="w-6 h-6 text-brand-coral"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-brand-coral">$75</span>
+                    </div>
+                    <h3 class="font-heading font-bold mb-2">Premium Backdrop</h3>
+                    <p class="text-gray-600 text-sm">Sequin, floral, or custom printed backdrops for stunning photos.</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-100 card-hover">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-brand-gold/50 rounded-lg flex items-center justify-center">
+                            <i data-lucide="smile" class="w-6 h-6 text-amber-600"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-brand-coral">$20</span>
+                    </div>
+                    <h3 class="font-heading font-bold mb-2">Props Kit</h3>
+                    <p class="text-gray-600 text-sm">Curated selection of fun signs, glasses, and accessories.</p>
+                </div>
+
+                <div class="bg-brand-coral/10 rounded-xl p-6 border-2 border-brand-coral/30 flex flex-col justify-center items-center text-center">
+                    <i data-lucide="sparkles" class="w-10 h-10 text-brand-coral mb-3"></i>
+                    <h3 class="font-heading font-bold mb-2">Bundle & Save</h3>
+                    <p class="text-gray-600 text-sm mb-3">Add 3+ add-ons and get 15% off your total.</p>
+                    <span class="text-sm font-semibold text-brand-coral">Auto-applied at checkout</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Late Fees Policy -->
+    <section class="py-16 bg-white border-t border-gray-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-brand-sky/20 rounded-2xl p-8 border border-brand-sky/30">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm flex-shrink-0">
+                        <i data-lucide="clock" class="w-6 h-6 text-brand-cyan"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-heading font-bold text-xl mb-3">Return Policy & Late Fees</h3>
+                        <p class="text-gray-600 mb-4">We understand events run long. Here's our simple late return structure:</p>
+                        
+                        <div class="grid md:grid-cols-3 gap-4 mt-6">
+                            <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                                <p class="font-bold text-brand-black">1–4 Hours Late</p>
+                                <p class="text-2xl font-bold text-brand-coral mt-1">$40</p>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                                <p class="font-bold text-brand-black">Same Day Return</p>
+                                <p class="text-2xl font-bold text-brand-coral mt-1">$75</p>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                                <p class="font-bold text-brand-black">Next Day</p>
+                                <p class="text-xl font-bold text-brand-coral mt-1">Full Extra Day</p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-sm text-gray-500 mt-4">
+                            <i data-lucide="info" class="w-4 h-4 inline mr-1"></i>
+                            Pro tip: Book the Weekend Package if you need flexibility—it's often cheaper than late fees!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking CTA -->
+    <section id="book" class="py-20 bg-gradient-to-br from-brand-purple/30 to-brand-cyan/30 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0,50 Q25,30 50,50 T100,50" stroke="white" stroke-width="2" fill="none" />
+            </svg>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 class="font-heading text-4xl lg:text-5xl font-bold text-brand-black mb-6">
+                Ready to Create <span class="brush-stroke">Shareable Moments?</span>
+            </h2>
+            <p class="text-brand-black/70 text-lg mb-10 max-w-2xl mx-auto">
+                Book your Party Content Booth today. Dates fill up fast—especially weekends!
+            </p>
+            
+            <div class="bg-white rounded-2xl p-8 shadow-2xl max-w-2xl mx-auto">
+                <form class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-brand-black mb-2">Event Date</label>
+                            <input type="date" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20 outline-none transition" />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-brand-black mb-2">Package</label>
+                            <select class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20 outline-none transition">
+                                <option>24-Hour Rental ($249)</option>
+                                <option>Weekend Rental - Best Seller ($299)</option>
+                                <option>Need Multiple Days</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-brand-black mb-2">Name</label>
+                            <input type="text" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20 outline-none transition" placeholder="Your name" />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-brand-black mb-2">Email</label>
+                            <input type="email" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20 outline-none transition" placeholder="you@example.com" />
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-brand-black mb-2">Event Type</label>
+                        <select class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20 outline-none transition">
+                            <option>Wedding</option>
+                            <option>Birthday Party</option>
+                            <option>Corporate Event</option>
+                            <option>Graduation</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-brand-black mb-2">Special Requests</label>
+                        <textarea rows="3" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20 outline-none transition" placeholder="Add-ons, questions, special needs..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full btn-coral text-white font-bold py-4 rounded-lg transition flex items-center justify-center">
+                        Request Booking
+                        <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+                    </button>
+                </form>
+                <p class="text-center text-sm text-gray-500 mt-4">
+                    We'll confirm availability and send payment details within 24 hours.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-sky/30 text-brand-black py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-2">
+                    <span class="font-script text-3xl text-brand-black">Selph Marketing</span>
+                    <p class="mt-4 text-gray-600 max-w-sm">
+                        Party Content Booth rentals for unforgettable events. Creating shareable moments across Dallas/Fort Worth.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-heading font-bold mb-4">Rental Info</h4>
+                    <ul class="space-y-2 text-gray-600 text-sm">
+                        <li><a href="#" class="hover:text-brand-cyan transition">Pricing</a></li>
+                        <li><a href="#" class="hover:text-brand-cyan transition">Add-Ons</a></li>
+                        <li><a href="#" class="hover:text-brand-cyan transition">FAQ</a></li>
+                        <li><a href="#" class="hover:text-brand-cyan transition">Delivery</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-heading font-bold mb-4">Support</h4>
+                    <ul class="space-y-2 text-gray-600 text-sm">
+                        <li><a href="#" class="hover:text-brand-cyan transition">Setup Guide</a></li>
+                        <li><a href="#" class="hover:text-brand-cyan transition">Troubleshooting</a></li>
+                        <li><a href="#" class="hover:text-brand-cyan transition">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm">© 2026 Selph Marketing Party Content Booth. All rights reserved.</p>
+                <div class="flex gap-6 text-sm text-gray-500">
+                    <a href="#" class="hover:text-brand-black transition">Terms</a>
+                    <a href="#" class="hover:text-brand-black transition">Privacy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <script>
+        lucide.createIcons();
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const body = document.body;
+
+        function openMenu() {
+            mobileMenu.classList.add('open');
+            body.classList.add('menu-open');
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.remove('open');
+            body.classList.remove('menu-open');
+        }
+
+        mobileMenuBtn.addEventListener('click', openMenu);
+        closeMenuBtn.addEventListener('click', closeMenu);
+
+        mobileLinks.forEach((link) => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                closeMenu();
+                setTimeout(() => {
+                    const target = document.querySelector(link.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }, 300);
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+                closeMenu();
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            if (!anchor.classList.contains('mobile-link')) {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            }
+        });
+
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thanks for your message! We will get back to you soon.');
+        });
+    </script>
+</body>
+</html>
